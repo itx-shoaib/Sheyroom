@@ -48,7 +48,8 @@ function Bookingscreen({match}) {
       } catch (error) {
         
       }
-    }
+    };
+
   return (
     <div className='m-5'>
       {loading ? (<h1><Loader/></h1>) : room ? (<div>

@@ -33,7 +33,6 @@ function Homescreen() {
   }, []);
 
   function filterByDate(dates) {
-    console.log(moment(dates[0]).format('DD-MM-YYYY'));
     setfromdate(moment(dates[0]).format('DD-MM-YYYY'))
     settodate(moment(dates[1]).format('DD-MM-YYYY'))
   }
