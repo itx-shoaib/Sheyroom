@@ -77,8 +77,16 @@ function Homescreen() {
   }
 
   function filterByType(e) {
-    const temprooms = duplicaterooms.filter(room=>room.type.toLowerCase()===e.toLowerCase())
-    setrooms(temprooms);
+
+    settype(e);
+
+    if (e!=='all') {
+      const temprooms = duplicaterooms.filter(room=>room.type.toLowerCase()===e.toLowerCase())
+      setrooms(temprooms);
+    }
+    else{
+      setrooms(duplicaterooms)
+    }
   }
   return (
     <div className="container">
