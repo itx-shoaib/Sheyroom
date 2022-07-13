@@ -15,6 +15,8 @@ function Homescreen() {
   const [formdate , setfromdate] = useState();
   const [todate , settodate] = useState();
   const [duplicaterooms , setduplicaterooms] = useState([]);
+  const [searchkey,setsearchkey] = useState('');
+  const [type,settype] = useState('all')
 
   useEffect(() => {
     async function fetchData() {
@@ -69,13 +71,31 @@ function Homescreen() {
     }
   }
 
+  function filterBySearch(){
+    const temprooms = duplicaterooms.filter(room=>room.name.toLowerCase().includes(searchkey.toLowerCase()))
+    setrooms(temprooms);
+  }
+
   return (
     <div className="container">
 
-      <div className="row mt-5">
+      <div className="row mt-5 bs">
         <div className="col-md-3">
           <RangePicker format='DD-MM-YYYY' onChange={filterByDate} />
         </div>
+
+        <div className="col-md-5">
+          <input type="text" className="form-control" placeholder="Search Room" 
+          value={searchkey} onChange={(e)=>{ setsearchkey(e.target.value) }} onKeyUp={filterBySearch} />
+        </div>
+
+      <div className="col-md-3">
+      <select className="form-control">
+          <option value="all">All</option>
+          <option value="delux">Delux</option>
+          <option value="non-delux">Non-Delux</option>
+        </select>
+      </div>
       </div>
 
 
@@ -83,14 +103,12 @@ function Homescreen() {
       <div className="row justify-content-center mt-5">
         {loading ? (
           <Loader/>
-        ) : rooms.length>1 ? (
+        ) : (
           rooms.map((room) => {
             return  <div className="col-md-9 mt-2" >
               <Room room={room} fromdate={formdate} todate={todate} />
             </div>;
         }) 
-        ) : (
-          <Error/>
         )}
       </div>
     </div>

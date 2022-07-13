@@ -80,7 +80,6 @@ function Bookingscreen({match}) {
                 </div>
                 <div style={{float : 'right'}}>
                 <button className='btn btn-primary' onClick={bookRoom}>Pay now</button>
-
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@ router.post("/bookroom",async(req,res)=>{
         totalamount,
         totaldays} = req.body
 
+
     try {
         const newbooking = new Booking({
             room: room.name,
