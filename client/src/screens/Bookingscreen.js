@@ -46,7 +46,7 @@ function Bookingscreen({match}) {
       try {
         const result = await axios.post('/api/bookings/bookroom',bookingDetail)
       } catch (error) {
-        
+        console.log(error);
       }
     };
 
@@ -63,7 +63,7 @@ function Bookingscreen({match}) {
                 <h1>Booking details</h1>
                 <hr />
                 <b>
-                  <p>Name:</p>
+                  <p>Name: {JSON.parse(localStorage.getItem('currentuser')).name}</p>
                   <p>From date: {fromdate}</p>
                   <p>To date: {todate}</p>
                   <p>Max count: {room.maxcount}</p>

@@ -22,6 +22,7 @@ router.post("/login",async(req, res)=>{
                 name : user.name,
                 email : user.email,
                 isAdmin : user.isAdmin,
+                _id: user._id,
                
             }
             res.send(temp)
