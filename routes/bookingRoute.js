@@ -38,6 +38,7 @@ router.post("/getbookingsbyuserid",async(req,res)=>{
 
    try {
     const bookings = await Booking.find({userid : userid})
+    res.send(bookings)
    } catch (error) {
     res.status(400).json({error})
    }

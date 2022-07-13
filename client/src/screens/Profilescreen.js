@@ -38,7 +38,7 @@ export function MyBookings(){
         async function fetchData() {
             
             try {
-                const rooms = await (await axios.post('/api/bookings/getbookingsbyuserid/',{userid : user._id})).data
+                const rooms = await (await axios.post('/api/bookings/getbookingsbyuserid',{userid : user._id})).data;
                 console.log(rooms)
             } catch (error) {
                 console.log(error)
