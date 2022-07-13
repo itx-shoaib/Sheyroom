@@ -64,7 +64,7 @@ function Homescreen() {
           }
       }
 
-      if(availablity == true || room.currentbookings.length == 0){
+      if(availablity === true || room.currentbookings.length === 0){
         temprooms.push(room)
       }
       
@@ -76,6 +76,10 @@ function Homescreen() {
     setrooms(temprooms);
   }
 
+  function filterByType(e) {
+    const temprooms = duplicaterooms.filter(room=>room.type.toLowerCase()===e.toLowerCase())
+    setrooms(temprooms);
+  }
   return (
     <div className="container">
 
@@ -90,7 +94,7 @@ function Homescreen() {
         </div>
 
       <div className="col-md-3">
-      <select className="form-control">
+      <select className="form-control" value={type} onChange={(e)=>{ filterByType(e.target.value)}}>
           <option value="all">All</option>
           <option value="delux">Delux</option>
           <option value="non-delux">Non-Delux</option>
