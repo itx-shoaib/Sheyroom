@@ -34,10 +34,18 @@ export default Profilescreen
 
 export function MyBookings(){
     const user = JSON.parse(localStorage.getItem('currentuser'));
-    useEffect(async()=>{
-        const rooms = await (await axios.post('/api/getbookingsbyuserid/',{userid : user._id})).data
-        console.log(rooms)
-    }, [])
+    useEffect( () => {
+        async function fetchData() {
+            
+            try {
+                const rooms = await (await axios.post('/api/bookings/getbookingsbyuserid/',{userid : user._id})).data
+                console.log(rooms)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchData();
+    },[])
     
     return(
         <div>
