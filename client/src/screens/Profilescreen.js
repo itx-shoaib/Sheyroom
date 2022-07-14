@@ -57,6 +57,19 @@ export function MyBookings(){
         fetchData();
     },[])
     
+    async function cancelBooking(bookingid,roomid) {
+
+        try {
+            setloading(true);
+            const result = await (await axios.post('/api/bookings/cancelbooking',{bookingid,roomid})).data
+            console.log(result)
+            setloading(false);
+        } catch (error) {
+            console.log(error);
+            setloading(false);
+        }
+    }
+    
     return(
         <div>
             <div className="row">
@@ -72,7 +85,7 @@ export function MyBookings(){
                             <p><b> Amount</b> : {booking.totalamount}</p>
                             <p><b>Status</b> : {booking.status === 'booked' ? 'CONFIRMED' : 'CANCELLED'}</p>
                             <div className='text-right'>
-                            <button className='btn btn-primary '>CANCEL BOOKING</button>
+                            <button className='btn btn-primary' onClick={()=>{cancelBooking(booking._id,booking.roomid)}}>CANCEL BOOKING</button>
 
                             </div>
                         </div>
