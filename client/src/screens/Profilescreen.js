@@ -1,4 +1,4 @@
-import { Tabs } from 'antd';
+import { Tabs,Divider, Tag  } from 'antd';
 import React,{useEffect,useState} from 'react';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
@@ -88,7 +88,7 @@ export function MyBookings(){
                             <p><b> CheckIn</b> : {booking.fromdate}</p>
                             <p><b> Check Out</b>: {booking.todate}</p>
                             <p><b> Amount</b> : {booking.totalamount}</p>
-                            <p><b>Status</b> : {booking.status === 'booked' ? 'CONFIRMED' : 'CANCELLED'}</p>
+                            <p><b>Status</b> : {booking.status === 'booked' ? (<Tag color="green">CONFIRMED</Tag>) : (<Tag color="red">CANCELLED</Tag>)}</p>
                             {booking.status === "booked" && (
                                 <div className='text-right'>
                                 <button className='btn btn-primary' onClick={()=>{cancelBooking(booking._id,booking.roomid)}}>CANCEL BOOKING</button>

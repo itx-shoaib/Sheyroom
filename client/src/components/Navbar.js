@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
-          <a className="navbar-brand" href="/client">
+          <a className="navbar-brand" href="/home">
             Shey Rooms
           </a>
           <button
