@@ -2,6 +2,7 @@ import { Tabs } from 'antd';
 import React,{useEffect,useState} from 'react';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+import swal from 'sweetalert2'
 import axios from 'axios';
 const { TabPane } = Tabs;
 
@@ -64,9 +65,13 @@ export function MyBookings(){
             const result = await (await axios.post('/api/bookings/cancelbooking',{bookingid,roomid})).data
             console.log(result)
             setloading(false);
+            swal.fire('congrats','Your booking has been cancelled','success').then(result=>{
+                window.location.reload();
+            })
         } catch (error) {
             console.log(error);
             setloading(false);
+            swal.fire('oopps','Something went wrong','error');
         }
     }
     
