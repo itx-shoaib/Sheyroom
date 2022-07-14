@@ -82,17 +82,19 @@ export function MyBookings(){
 
                     {loading && (<Loader/>)}
                     {booking && (booking.map(booking=>{
-                        return <div className='bs'>
+                        return <div className='bs mb-4'>
                             <p><b>{booking.room}</b></p>
                             <p><b> Bookingid</b> : {booking._id}</p>
                             <p><b> CheckIn</b> : {booking.fromdate}</p>
                             <p><b> Check Out</b>: {booking.todate}</p>
                             <p><b> Amount</b> : {booking.totalamount}</p>
                             <p><b>Status</b> : {booking.status === 'booked' ? 'CONFIRMED' : 'CANCELLED'}</p>
-                            <div className='text-right'>
-                            <button className='btn btn-primary' onClick={()=>{cancelBooking(booking._id,booking.roomid)}}>CANCEL BOOKING</button>
-
-                            </div>
+                            {booking.status === "booked" && (
+                                <div className='text-right'>
+                                <button className='btn btn-primary' onClick={()=>{cancelBooking(booking._id,booking.roomid)}}>CANCEL BOOKING</button>
+                                
+                                </div>
+                            )}
                         </div>
                     }))}
                 </div>
