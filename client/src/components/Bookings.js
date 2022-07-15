@@ -8,7 +8,7 @@ const Bookings = () => {
     const [bookings, setbookings] = useState([])
     const [loading, setloading] = useState(true);
     const [error, seterror] = useState();
-    
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -23,20 +23,43 @@ const Bookings = () => {
         }
         fetchData();
     }, [])
-    
-  return (
-    <>
-        <div className="row">
-            <div className="col-md-10">
 
-                <h1>Bookings</h1>
-                {loading && (<Loader/>)}
-                {bookings.length && (<h1>There are total {bookings.length} bookings</h1>) }
+    return (
+        <>
+            <div className="row">
+                <div className="col-md-11">
 
+                    <h1>Bookings</h1>
+                    {loading && (<Loader />)}
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Booking Id</th>
+                                <th scope="col">User Id</th>
+                                <th scope="col">Room</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {bookings.length && (bookings.map(booking => {
+                                return <tr>
+                                    <td scope="row">{booking._id}</td>
+                                    <td>{booking.userid}</td>
+                                    <td>{booking.room}</td>
+                                    <td>{booking.fromdate}</td>
+                                    <td>{booking.todate}</td>
+                                    <td>{booking.status}</td>
+                                </tr>
+                            }))}
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
-        </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default Bookings
