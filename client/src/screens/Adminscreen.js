@@ -3,6 +3,7 @@ import { Tabs } from 'antd';
 import Bookings from '../components/Bookings';
 import Rooms from '../components/Rooms';
 import Users from '../components/Users';
+import Addroom from '../components/Addroom';
 
 const { TabPane } = Tabs;
 
@@ -24,7 +25,7 @@ function Adminscreen() {
                     <Rooms/>
                 </TabPane>
                 <TabPane tab="Add Room" key="3">
-                    <h1>Add Room</h1>
+                    <Addroom/>
                 </TabPane>
                 <TabPane tab="Users" key="4">
                     <Users/>
