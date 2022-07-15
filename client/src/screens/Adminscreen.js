@@ -2,6 +2,7 @@ import React from 'react'
 import { Tabs } from 'antd';
 import Bookings from '../components/Bookings';
 import Rooms from '../components/Rooms';
+import Users from '../components/Users';
 
 const { TabPane } = Tabs;
 
@@ -20,7 +21,7 @@ function Adminscreen() {
                     <h1>Add Room</h1>
                 </TabPane>
                 <TabPane tab="Users" key="4">
-                    <h1>Users</h1>
+                    <Users/>
                 </TabPane>
             </Tabs>
         </div>

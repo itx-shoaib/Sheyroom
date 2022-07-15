@@ -11,7 +11,7 @@ const Users = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const data = await (await axios.get('/api/users/getallusers')).data
+                const data = await (await axios.get('/api/user/getallusers')).data
                 setusers(data);
                 setloading(false);
             } catch (error) {
@@ -36,20 +36,18 @@ const Users = () => {
                                 <th scope="col">User Id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">isAdmin</th>
+                                <th scope="col">Is Admin</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {bookings.length && (bookings.map(booking => {
+                            {users && (users.map(user => {
                                 return <tr>
-                                    <td scope="row">{booking._id}</td>
-                                    <td>{booking.userid}</td>
-                                    <td>{booking.room}</td>
-                                    <td>{booking.fromdate}</td>
-                                    <td>{booking.todate}</td>
-                                    <td>{booking.status}</td>
+                                    <td scope="row">{user._id}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.isAdmin ? 'YES' : 'NO'}</td>
                                 </tr>
-                            }))} */}
+                            }))}
                         </tbody>
                     </table>
 
