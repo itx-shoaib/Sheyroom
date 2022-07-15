@@ -3,17 +3,17 @@ import axios from "axios";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 
-const Bookings = () => {
+const Rooms = () => {
 
-    const [bookings, setbookings] = useState([])
+    const [rooms, setrooms] = useState([])
     const [loading, setloading] = useState(true);
     const [error, seterror] = useState();
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const data = await (await axios.get('/api/bookings/getallbookings')).data
-                setbookings(data);
+                const data = await (await axios.get('/api/rooms/getallrooms')).data
+                setrooms(data);
                 setloading(false);
             } catch (error) {
                 console.log(error);
@@ -29,28 +29,28 @@ const Bookings = () => {
             <div className="row">
                 <div className="col-md-12">
 
-                    <h1>Bookings</h1>
+                    <h1>Rooms</h1>
                     {loading && (<Loader />)}
                     <table class="table table-striped table-dark">
                         <thead>
                             <tr>
-                                <th scope="col">Booking Id</th>
-                                <th scope="col">User Id</th>
-                                <th scope="col">Room</th>
-                                <th scope="col">From</th>
-                                <th scope="col">To</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Room Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Rent per day</th>
+                                <th scope="col">Max count</th>
+                                <th scope="col">Phone number</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {bookings.length && (bookings.map(booking => {
+                            {rooms.length && (rooms.map(room => {
                                 return <tr>
-                                    <td scope="row">{booking._id}</td>
-                                    <td>{booking.userid}</td>
-                                    <td>{booking.room}</td>
-                                    <td>{booking.fromdate}</td>
-                                    <td>{booking.todate}</td>
-                                    <td>{booking.status}</td>
+                                    <td scope="row">{room._id}</td>
+                                    <td>{room.name}</td>
+                                    <td>{room.type}</td>
+                                    <td>{room.rentperday}</td>
+                                    <td>{room.maxcount}</td>
+                                    <td>{room.phonenumber}</td>
                                 </tr>
                             }))}
                         </tbody>
@@ -59,7 +59,7 @@ const Bookings = () => {
                 </div>
             </div>
         </>
-    )
+  )
 }
 
-export default Bookings
+export default Rooms

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Tabs } from 'antd';
 import Bookings from '../components/Bookings';
+import Rooms from '../components/Rooms';
+
 const { TabPane } = Tabs;
 
 function Adminscreen() {
@@ -12,7 +14,7 @@ function Adminscreen() {
                     <Bookings/>
                 </TabPane>
                 <TabPane tab="Rooms" key="2">
-                    <h1>Rooms</h1>
+                    <Rooms/>
                 </TabPane>
                 <TabPane tab="Add Room" key="3">
                     <h1>Add Room</h1>
