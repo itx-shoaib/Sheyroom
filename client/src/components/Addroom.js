@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import swal from 'sweetalert2'
+import { set } from "mongoose";
 
 const Addroom = () => {
     const [name, setname] = useState([])
@@ -13,7 +15,7 @@ const Addroom = () => {
     const [imageurl1, setimageurl1] = useState([])
     const [imageurl2, setimageurl2] = useState([])
     const [imageurl3, setimageurl3] = useState([])
-    const [loading, setloading] = useState(true);
+    const [loading, setloading] = useState(false);
     const [error, seterror] = useState();
 
     // useEffect(() => {
@@ -31,7 +33,7 @@ const Addroom = () => {
     //     fetchData();
     // }, [])
 
-    function addRoom() {
+    async function addRoom() {
         const newRoom = {
             name,
             rentperday,
@@ -42,14 +44,25 @@ const Addroom = () => {
             imageurls:[imageurl1,imageurl2,imageurl3]
         }
 
-        console.log(newRoom);
+        try {
+            setloading(true)
+            const results = await (await axios.post('/api/rooms/addroom',newRoom)).data
+            console.log(results)
+            setloading(false)
+            swal.fire('Congrats','Your new Room has been added successfully','success').then(results=>{
+                window.location.home = '/home';
+            })
+        } catch (error) {
+            console.log(error)
+            setloading(false);
+            swal.fire('oopps','Something went wrong','error');
+        }
     }
 
     return (
         <>
             <div className="row">
-                    <h1>Add Room</h1>
-                    {/* {loading && (<Loader />)} */}
+                    {loading && (<Loader />)}
 
                 <div className="col-md-5">
 
