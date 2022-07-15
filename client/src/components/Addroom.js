@@ -65,20 +65,44 @@ const Addroom = () => {
                     {loading && (<Loader />)}
 
                 <div className="col-md-5">
-
+                    <div className="form-group">
                     <input type="text" classaName="form-control"  placeholder="Room name" value={name} onChange={(e)=>{setname(e.target.value)}}/>
+                    </div>
+
+                    <div className="form-group">
                     <input type="text" classaName="form-control"  placeholder="Rent per day" value={rentperday} onChange={(e)=>{setrentperday(e.target.value)}} />
+                    </div>
+
+                    <div className="form-group">
                     <input type="text" classaName="form-control"  placeholder="Max count" value={maxcount} onChange={(e)=>{setmaxcount(e.target.value)}}/>
+                    </div>
+
+                    <div className="form-group">
                     <input type="text" classaName="form-control"  placeholder="Description" value={description} onChange={(e)=>{setdescription(e.target.value)}} />
+                    </div>
+
+                    <div className="form-group">
                     <input type="text" classaName="form-control"  placeholder="Phone number" value={phonenumber} onChange={(e)=>{setphonenumber(e.target.value)}} />
+                    </div>
 
                 </div>
                 <div className="col-md-5">
 
+                    <div className="form-group">
                     <input type="text" classaName="form-control"  placeholder="Type" value={type} onChange={(e)=>{settype(e.target.value)}} />
+                    </div>
+
+                    <div className="form-group">
                     <input type="text" classaName="form-control"  placeholder="Image Url 1" value={imageurl1} onChange={(e)=>{setimageurl1(e.target.value)}} />
+                    </div>
+
+                    <div className="from-group mb-2">
                     <input type="text" classaName="form-control"  placeholder="Image url 2" value={imageurl2} onChange={(e)=>{setimageurl2(e.target.value)}} />
+                    </div>
+
+                    <div className="form-group">
                     <input type="text" classaName="form-control"  placeholder="Image Url 3" value={imageurl3} onChange={(e)=>{setimageurl3(e.target.value)}} />
+                    </div>
 
                     <div className="text-right">
                         <button className="btn btn-primary" onClick={addRoom}>Add Room</button>
