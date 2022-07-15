@@ -117,7 +117,7 @@ function Homescreen() {
           <Loader/>
         ) : (
           rooms.map((room) => {
-            return  <div className="col-md-9 mt-2" >
+            return  <div className="col-md-9 mt-2 mb-4" >
               <Room room={room} fromdate={formdate} todate={todate} />
             </div>;
         }) 
