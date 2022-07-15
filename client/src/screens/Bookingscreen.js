@@ -54,7 +54,7 @@ function Bookingscreen({match}) {
     };
 
   return (
-    <div className='m-5'>
+    <div className='m-5' data-aos="flip-left">
       {loading ? (<h1><Loader/></h1>) : room ? (<div>
         <div className="row justify-content-center my-3 bs">
             <div className="col-md-6 my-2">
