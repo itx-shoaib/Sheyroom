@@ -43,7 +43,7 @@ const Bookings = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {bookings.length && (bookings.map(booking => {
+                            {bookings && (bookings.map(booking => {
                                 return <tr>
                                     <td scope="row">{booking._id}</td>
                                     <td>{booking.userid}</td>

@@ -43,7 +43,7 @@ const Rooms = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {rooms.length && (rooms.map(room => {
+                            {rooms && (rooms.map(room => {
                                 return <tr>
                                     <td scope="row">{room._id}</td>
                                     <td>{room.name}</td>
