@@ -8,8 +8,8 @@ const getAllRooms=()=>dispatch=>{
     try {
         const response = axios.get('/api/rooms/getallrooms')
         console.log(response)
-        dispatch({type:'GET_ROOMS_SUCCESS'})
+        dispatch({type:'GET_ROOMS_SUCCESS',payload:response.data})
     } catch (error) {
-        dispatch({type:'GET_ROOMS_FAILED'})
+        dispatch({type:'GET_ROOMS_FAILED',payload:error})
     }
 }
