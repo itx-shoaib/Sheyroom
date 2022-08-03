@@ -2,11 +2,11 @@
 import axios from 'axios';
 
 // All actions regarding to rooms
-const getAllRooms=()=>dispatch=>{
+export const getAllRooms=()=>async dispatch=>{
     dispatch({type:'GET_ROOMS_REQUEST'})
 
     try {
-        const response = axios.get('/api/rooms/getallrooms')
+        const response = await axios.get('/api/rooms/getallrooms')
         console.log(response)
         dispatch({type:'GET_ROOMS_SUCCESS',payload:response.data})
     } catch (error) {

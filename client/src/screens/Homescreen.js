@@ -1,4 +1,6 @@
+import { getAllRooms } from "../actions/roomActions";
 import React, { useEffect, useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
 import axios from "axios";
 import Room from "../components/Room";
 import Loader from "../components/Loader";
@@ -17,11 +19,13 @@ function Homescreen() {
   const [duplicaterooms , setduplicaterooms] = useState([]);
   const [searchkey,setsearchkey] = useState('');
   const [type,settype] = useState('all')
+  const dispatch = useDispatch()
 
   useEffect(() => {
     async function fetchData() {
       try {
         setloading(true);
+        // const data = dispatch(getAllRooms)
         const data = (await axios.get("/api/rooms/getallrooms")).data;
 
         setrooms(data);
